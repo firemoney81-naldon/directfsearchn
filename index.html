@@ -1,23 +1,892 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
+
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "티구안 보험료 비교견적 전문 플랫폼",
+          "url": "https://tiguan-insurance-compare.co.kr",
+          "description": "2026년 최신 폭스바겐 티구안 보험료 평균 비용 및 모델별 다이렉트 자동차보험 실시간 가격비교 서비스를 제공합니다.",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://tiguan-insurance-compare.co.kr/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          },
+          "offers": {
+            "@type": "AggregateOffer",
+            "offerCount": "32",
+            "lowPrice": "470000",
+            "highPrice": "2500000",
+            "priceCurrency": "KRW",
+            "areaServed": "대한민국"
+          }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #1e293b;
+            --secondary-color: #3b82f6;
+            --accent-color: #0d9488;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-sub: #475569;
+            --border-color: #e2e8f0;
+            --accent-light: #f0fdfa;
+            --secondary-light: #eff6ff;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        nav {
+            margin-left: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-section h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-section p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 0;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            border-left: 5px solid var(--secondary-color);
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: var(--text-sub);
+            margin-bottom: 20px;
+        }
+
+        .grid-two-cols {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-two-cols {
+                grid-template-columns: 1fr;
+            }
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            nav {
+                margin-left: 0;
+                width: 100%;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+        }
+
+        /* Calculator Styling */
+        .calculator-card {
+            background-color: var(--secondary-light);
+            border: 1px solid #bfdbfe;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        select, input[type="text"], input[type="number"], textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            background-color: #ffffff;
+            color: var(--text-main);
+        }
+
+        select:focus, input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .checkbox-item input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background-color: #2563eb;
+        }
+
+        .calc-result {
+            background-color: #ffffff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 25px;
+            border: 1px solid #bfdbfe;
+            display: none;
+        }
+
+        .calc-result-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calc-result-row:last-child {
+            border-bottom: none;
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            padding-top: 15px;
+        }
+
+        /* Tables and Info Boxes */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 12px 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-sub);
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+
+        .info-box {
+            background-color: var(--accent-light);
+            border: 1px solid #99f6e4;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            color: var(--text-sub);
+        }
+
+        .tag-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--text-sub);
+            text-decoration: none;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .tag:hover {
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border-color: var(--secondary-color);
+        }
+
+        .related-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .related-links a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .related-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* FAQ Accordion */
+        .faq-dl dt {
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 15px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            margin-top: 10px;
+            cursor: pointer;
+            border: 1px solid var(--border-color);
+            transition: background-color 0.2s;
+        }
+
+        .faq-dl dt:hover {
+            background-color: #f1f5f9;
+        }
+
+        .faq-dl dd {
+            padding: 15px;
+            margin: 0;
+            color: var(--text-sub);
+            border-left: 3px solid var(--secondary-color);
+            background-color: #ffffff;
+            display: none;
+        }
+
+        .faq-dl dt.active + dd {
+            display: block;
+        }
+
+        /* Tabs styling */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            font-weight: 600;
+            color: var(--text-sub);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+        }
+
+        .tab-button.active {
+            color: var(--secondary-color);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">티구안 보험료 통합 비교 분석 센터</a>
+            <nav aria-label="메인 메뉴">
+                <ul>
+                    <li><a href="#시뮬레이터">예상 보험료 계산기</a></li>
+                    <li><a href="#연령별분석">연령별 평균 금액</a></li>
+                    <li><a href="#모델라인업">라인업 상세 등급</a></li>
+                    <li><a href="#유지비비교">장단점 및 차이점</a></li>
+                    <li><a href="#신규가입">할인 및 사은품 혜택</a></li>
+                    <li><a href="#정보센터">보험 정보 센터</a></li>
+                    <li><a href="#자주묻는질문">자주 묻는 질문</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-container">
+            <h1>폭스바겐 티구안 다이렉트 자동차 보험료 비교 가이드</h1>
+            <p>2026년 기준 모델별 예상 가입 견적과 연령별 운전자 평균 할인 혜택 분석</p>
+        </div>
+    </div>
+
     <main>
-      <h1>Home page</h1>
+        
+        <section id="시뮬레이터">
+            <h2>티구안 모델별 실시간 다이렉트 보험료 예상 시뮬레이터</h2>
+            <p>운전자의 주행 조건과 선택하고자 하는 세부 세대 모델을 지정하여 다이렉트 평균 견적 요율을 신속하게 계산할 수 있습니다. 30개 이상의 폭스바겐 티구안 라인업 데이터와 특약 조건이 결합된 맞춤형 시뮬레이션 시스템입니다.</p>
+            
+            <div class="calculator-card">
+                <div class="form-group">
+                    <label for="calc-model">1. 폭스바겐 티구안 세부 모델 선택</label>
+                    <select id="calc-model" required>
+                        <option value="">차량 정보를 선택하세요</option>
+                        <option value="1.0">폭스바겐 티구안 2.0 TDI 프리미엄 (가장 대중적인 디젤 모델)</option>
+                        <option value="1.02">폭스바겐 티구안 2.0 TDI 프레스티지 (고급 편의사양 탑재)</option>
+                        <option value="1.05">폭스바겐 티구안 2.0 TDI 4모션 프리미엄 (4륜 구동 시스템)</option>
+                        <option value="1.07">폭스바겐 티구안 2.0 TDI 4모션 프레스티지 (풀옵션 사륜)</option>
+                        <option value="1.03">폭스바겐 티구안 올스페이스 2.0 TDI 프레스티지 (7인승 디젤 패밀리형)</option>
+                        <option value="0.95">폭스바겐 티구안 올스페이스 2.0 TSI 프리미엄 (합리적인 가솔린형)</option>
+                        <option value="0.98">폭스바겐 티구안 올스페이스 2.0 TSI 프레스티지 (인기 가솔린 7인승)</option>
+                        <option value="0.92">폭스바겐 티구안 1.5 TSI 가솔린 모델 (차세대 효율 주력 모델)</option>
+                        <option value="1.10">폭스바겐 티구안 eHybrid 플러그인 하이브리드 프리미엄 (친환경 지원금 대상)</option>
+                        <option value="1.13">폭스바겐 티구안 eHybrid 플러그인 하이브리드 프레스티지 (하이브리드 풀옵션)</option>
+                        <option value="1.08">폭스바겐 티구안 R-Line 스포츠 에디션 디젤 (스포티한 서스펜션 적용)</option>
+                        <option value="1.04">폭스바겐 티구안 R-Line 스포츠 에디션 가솔린 (세련된 디자인 패키지)</option>
+                        <option value="0.85">폭스바겐 티구안 1세대 2.0 TDI 블루모션 컴포트 (클래식 보급형)</option>
+                        <option value="0.88">폭스바겐 티구안 1세대 2.0 TDI 블루모션 프리미엄 (중고 선호도 1위)</option>
+                        <option value="0.90">폭스바겐 티구안 2세대 페이스리프트 2.0 TDI 컴포트 (가성비 중심)</option>
+                        <option value="0.93">폭스바겐 티구안 2세대 페이스리프트 2.0 TDI 프리미엄 (기본 완성형)</option>
+                        <option value="0.96">폭스바겐 티구안 2세대 페이스리프트 2.0 TDI 프레스티지 (디젤 베스트셀러)</option>
+                        <option value="0.99">폭스바겐 티구안 올스페이스 7인승 가솔린 프레스티지 (가솔린 대형 트렁크)</option>
+                        <option value="1.01">폭스바겐 티구안 올스페이스 7인승 디젤 프레스티지 (장거리 적합 패밀리카)</option>
+                        <option value="0.91">폭스바겐 티구안 2.0 TDI 컴포트 트림 (실속형 운전자 전용)</option>
+                        <option value="0.92">폭스바겐 티구안 2.0 TDI 스타일 모델 (도심 주행 최적화)</option>
+                        <option value="1.00">폭스바겐 티구안 2.0 TSI 4모션 가솔린 프레스티지 (사륜 가솔린의 안락함)</option>
+                        <option value="0.97">폭스바겐 티구안 2.0 TSI 컴프레서 가솔린 에디션 (고성능 수입 SUV)</option>
+                        <option value="1.06">폭스바겐 티구안 2.0 TDI R-Line 익스테리어 에디션 (고유한 스타일)</option>
+                        <option value="1.01">폭스바겐 티구안 올스페이스 2.0 TSI 4모션 프리미엄 (가솔린 패밀리카 엔트리)</option>
+                        <option value="0.95">신형 티구안 2.0 TDI 프리미엄 페이스리프트 (새로운 패밀리 룩)</option>
+                        <option value="0.94">폭스바겐 티구안 2.0 TDI 프리미엄 7단 DSG 에디션 (안정적인 기어 변속)</option>
+                        <option value="1.03">폭스바겐 티구안 2.0 TDI 4모션 7인승 올스페이스 (고효율 디젤 대형)</option>
+                        <option value="0.97">폭스바겐 티구안 올스페이스 프리미엄 가솔린 2.0 TSI (정숙성 확보 트림)</option>
+                        <option value="0.94">폭스바겐 티구안 2.0 디젤 2WD 프레스티지 페이스리프트 (세련된 전면 디자인)</option>
+                        <option value="0.98">폭스바겐 티구안 2.0 디젤 4WD 프레스티지 페이스리프트 (올라운더 수입 SUV)</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="calc-age">2. 운전자 최저 연령 범위 설정</label>
+                    <select id="calc-age" required>
+                        <option value="">연령 범위를 선택하세요</option>
+                        <option value="21">만 21세 이상 (첫 신규 가입 포함 높은 기본 요율 적용)</option>
+                        <option value="26">만 26세 이상 (대부분의 표준 할인이 개시되는 기점)</option>
+                        <option value="30">만 30세 이상 (금액 안정기가 찾아오는 핵심 구간)</option>
+                        <option value="40">만 40세 이상 (가장 저렴한 혜택을 받는 최적 운전 경력)</option>
+                        <option value="50">만 50세 이상 (중장년층 혜택 및 장기 무사고 조건)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="calc-accident">3. 과거 무사고 주행 이력 선택</label>
+                    <select id="calc-accident" required>
+                        <option value="1.0">신규 가입 또는 무사고 1년 미만 (표준 기준값 적용)</option>
+                        <option value="0.85">최근 3년 연속 무사고 유지 중 (대폭적인 할인 특약 혜택)</option>
+                        <option value="1.2">최근 1회 사고 이력 보유 (일부 요율 할증 및 금액 상승)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. 2026년 다이렉트 맞춤 할인 특약 추가 선택</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="disc-mileage" checked>
+                            연간 주행거리 마일리지 (최대 15% 감면)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="disc-tmap">
+                            티맵 착한운전 및 안전 점수 (최대 11% 할인)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="disc-blackbox" checked>
+                            블랙박스 및 빌트인캠 장착 (4% 할인)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="disc-child">
+                            만 6세 이하 자녀 및 태아 동승 (8% 추가 감면)
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="disc-safety">
+                            차선 이탈 및 전방 추돌 안전 장치 (5% 절감)
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" class="submit-btn" onclick="calculatePremium()">실시간 예상 견적 시뮬레이션 실행</button>
+            </div>
+
+            <div id="calc-result-box" class="calc-result">
+                <h3>예상 결과 리포트</h3>
+                <div class="calc-result-row">
+                    <span>기준 모델 기본 가격 기준치</span>
+                    <span id="res-base">0 원</span>
+                </div>
+                <div class="calc-result-row">
+                    <span>선택한 할인 특약 총액 감면 수치</span>
+                    <span id="res-discount">0 원</span>
+                </div>
+                <div class="calc-result-row">
+                    <span>최종 연간 예상 납입 비용</span>
+                    <span id="res-final">0 원</span>
+                </div>
+                <p style="margin-top: 15px; font-size: 0.85rem; color: var(--text-sub);">※ 본 금액은 각 손해보험사 평균 인수 심사 통계와 2026년 상반기 기준 시장 위험 요율을 기반으로 구성된 참고 가격입니다. 개별 오너의 정확한 산출 금액은 제휴 업체를 통한 실시간 전산망 인증을 거쳐 산출하는 것이 가장 적합합니다.</p>
+            </div>
+        </section>
+
+        <section id="연령별분석">
+            <h2>운전자 연령대에 따른 티구안 보험료 평균 통계 수치</h2>
+            <p>다이렉트 자동차보험 상품 가격은 연령과 사고 빈도, 부품 조달 수리 비용 등 복합적인 요인에 의하여 순위가 결정됩니다. 특히 수입 준중형 SUV 차종인 폭스바겐 티구안은 외산 자동차 할증 등급이 반영되므로 국내 SUV 차종 대비 상대적으로 높은 부품비 장단점을 고려하여 가입 준비를 철저히 해야 합니다.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>운전자 연령 범위</th>
+                        <th>평균 예상 연간 비용</th>
+                        <th>주요 할증 사유 및 추천 절감 방식</th>
+                        <th>가장 저렴한곳 및 권장 가입 전략</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>만 21세 이상 25세 이하</td>
+                        <td>1,800,000원 ~ 2,500,000원</td>
+                        <td>수입차 신규 보험 청약에 따른 손해율 반영 및 운전 경력 부재</td>
+                        <td>부모님 밑으로 1인 지정을 추가하여 무사고 경력 취득 후 단독 가입 추진</td>
+                    </tr>
+                    <tr>
+                        <td>만 26세 이상 29세 이하</td>
+                        <td>1,100,000원 ~ 1,600,000원</td>
+                        <td>요율 기준이 완화되는 첫 핵심 구간으로 다이렉트 가격 격차 확대</td>
+                        <td>인터넷 전용 스마트 비교 업체의 지원금 및 제휴 상품권 이벤트 활용</td>
+                    </tr>
+                    <tr>
+                        <td>만 30세 이상 49세 이하</td>
+                        <td>750,000원 ~ 1,100,000원</td>
+                        <td>결혼, 자녀 유무, 패밀리 카 형태의 마일리지 특약 적용이 유용한 시기</td>
+                        <td>티맵 안전 주행 기록을 적극 이용하고 제휴 신용카드 즉시 캐시백 혜택 연계</td>
+                    </tr>
+                    <tr>
+                        <td>만 50세 이상</td>
+                        <td>680,000원 ~ 950,000원</td>
+                        <td>전반적인 장기 무사고 요율의 영향으로 전 구간 중 가장 저렴한 가격 형성</td>
+                        <td>블랙박스와 스마트 자율 주행 패키지 등록을 통한 고정 할인 유지</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="info-box">
+                <strong>전문가의 한마디:</strong> 수입 준중형 SUV인 티구안 라인업은 사고 시 독일 폭스바겐 순정 부품 가격과 공임이 국산차보다 높게 계상되므로 자차 담보 선택 시 자기부담금 비율을 20%로 안정감 있게 선택하는 것이 필수입니다. 또한 대물배상 보장 금액을 최소 10억원 이상으로 여유 있게 가입해야 예기치 못한 도심 수입차 연쇄 접촉사고 리스크를 사전에 예방할 수 있습니다.
+            </div>
+        </section>
+
+        <section id="모델라인업">
+            <h2>티구안 세부 라인업 및 등급별 보험 부담 비교</h2>
+            <p>폭스바겐 티구안 라인업은 각 모델의 출고 연식, 탑재 연료 방식, 구동 방식, 탑승인원에 따라 국내 보험개발원의 손해율 요율 등급 차이점을 보여줍니다. 가솔린 모델인 올스페이스 및 디젤 터보 TDI 프레스티지의 차이점을 미리 파악해야만 차후 고정 유지 비용 누수를 통제할 수 있습니다.</p>
+
+            <div class="tabs">
+                <button class="tab-button active" onclick="openTab(event, 'tab-diesel')">디젤 TDI 라인업</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-gasoline')">가솔린 TSI 라인업</button>
+                <button class="tab-button" onclick="openTab(event, 'tab-eco')">친환경 및 스포츠 트림</button>
+            </div>
+
+            <div id="tab-diesel" class="tab-content active">
+                <p>디젤 모델인 2.0 TDI 프리미엄이나 2.0 TDI 프레스티지는 높은 토크와 우수한 연비를 장점으로 지니지만 연간 주행거리가 비교적 길기 때문에 주행거리 특약 환급률이 낮아질 수 있는 특성이 존재합니다.</p>
+                <ul>
+                    <li>폭스바겐 티구안 2.0 TDI 프리미엄: 누적 등록 대수가 가장 많은 모델로 부품 및 사설 정비성이 양호함.</li>
+                    <li>폭스바겐 티구안 2.0 TDI 프레스티지: 첨단 차선 유지 센서가 탑재되어 ADAS 감면 특약 대상에 포함됨.</li>
+                    <li>폭스바겐 티구안 올스페이스 2.0 TDI 프레스티지: 7인승 디젤 구조로 다자녀 혜택 가산 범위가 확대 적용됨.</li>
+                </ul>
+            </div>
+
+            <div id="tab-gasoline" class="tab-content">
+                <p>정숙하고 매끄러운 주행감을 구현하는 가솔린 터보 모델인 올스페이스 TSI 라인은 부품 구조가 디젤 모델에 비해 비교적 간결하여 엔진 결함으로 인한 전산 수리 빈도가 통계상 적어, 보험사 등급 평가에서 다소 우호적인 위치에 놓여 있습니다.</p>
+                <ul>
+                    <li>폭스바겐 티구안 올스페이스 2.0 TSI 프리미엄: 신차 가액 대비 우수한 유지 비용 비율을 갖춤.</li>
+                    <li>폭스바겐 티구안 올스페이스 2.0 TSI 프레스티지: 가솔린 대형 트렁크 구조로 캠핑족들이 가장 많이 가입함.</li>
+                    <li>폭스바겐 티구안 1.5 TSI 가솔린 모델: 배기량이 적어 일차적인 세금 및 보험 기본 요율이 상대적으로 쌈.</li>
+                </ul>
+            </div>
+
+            <div id="tab-eco" class="tab-content">
+                <p>전동화 파워트레인을 탑재한 eHybrid 및 스포티함을 가미한 R-Line은 차량의 초기 출시 출고 가액이 일반 사양보다 높게 잡히기 때문에 차량 자차 보험 가입 금액에 직접적인 비례 요율이 붙습니다.</p>
+                <ul>
+                    <li>폭스바겐 티구안 eHybrid 플러그인 하이브리드 프리미엄: 배터리 교체 고비용 리스크가 있어 자차 금액이 가솔린 차량 대비 다소 우상향함.</li>
+                    <li>폭스바겐 티구안 R-Line 스포츠 에디션 디젤: 특화 전용 범퍼 디자인 설계로 범퍼 파손 및 도색 수리비 청구 시 상대적으로 고액이 청구되는 경향이 있음.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="유지비비교">
+            <h2>티구안 모델별 장단점 및 유지비 차이점 심층 요약</h2>
+            <p>많은 오너들이 주요 인터넷 채널인 보배드림, 디시인사이드 수입차 갤러리 등에서 내돈내산 경험담을 적극 개진하는 화두 중 하나가 바로 폭스바겐의 연간 유지비용 계산입니다. 단순히 월 납입 주유비만 계산하기보다는 종합 세금 및 사고 대물 합산 요소를 짚어 보아야 장기 보유 계획을 안전하게 세울 수 있습니다.</p>
+
+            <div class="grid-two-cols">
+                <div>
+                    <h3>티구안 디젤 및 가솔린 차량의 장점</h3>
+                    <p>독일 명가 특유의 견고한 고속 안정성과 뛰어난 연비 성능을 들 수 있습니다. 7단 DSG 기어 결합으로 장거리 크루징 시 연비가 리터당 20킬로미터에 육박하는 괴력을 보여주며 고속도로 무사고 주행 안정성이 매우 견고합니다. 첨단 긴급 제동 보조 시스템 덕분에 신규 가입 시 자가 보호 안전 장치 할인 순위에서 항상 높은 비율을 부여받습니다.</p>
+                </div>
+                <div>
+                    <h3>티구안 라인업의 잠재적 단점</h3>
+                    <p>보증 기간이 만료되는 시점부터 주요 고질병으로 꼽히는 플라이휠 진동 소음 및 히터 코어 통로 막힘, 쇼크 업소버 서스펜션 오일 누출 등의 사설 정비 수요가 생긴다는 것입니다. 해당 수리 부품들의 수입 조달 가격이 국산 준중형 SUV보다 비싸기 때문에 대물 및 자차 접촉 보상을 가입할 때 면책 금액을 상세히 정해 두지 않으면 가계 재정 부담이 발생할 수 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="신규가입">
+            <h2>다이렉트 자동차보험 신규 가입 할인 및 사은품 혜택 분석</h2>
+            <p>매년 갱신 주기가 찾아오는 자동차 계약은 어디서 어떤 방식으로 가입하느냐에 따라 체감 부담률이 천차만별입니다. 특히 네이버, 구글, 유튜브와 같은 대형 플랫폼 연계 행사를 활용하면 실속 있는 현금지원, 지원금 피드백 혹은 다채로운 주유 상품권 이벤트 혜택을 챙겨 비용을 추가로 절감할 수 있습니다.</p>
+
+            <h3>주요 플랫폼별 마케팅 혜택 정리</h3>
+            <ul>
+                <li>네이버 페이 제휴 이벤트: 신규 보험료 견적 확인만으로 즉시 네이버 포인트를 지급하며 본 계약 체결 시 현금성 적립을 추가 제공합니다.</li>
+                <li>구글 다이렉트 검색 광고 연계: 신용카드 청구 할인 프로모션을 수시로 진행하여 일시불 납입 시 연 최대 3만원 가량의 주유 상품권을 환급합니다.</li>
+                <li>유튜브 및 페이스북 전용 링크: 전용 다이렉트 추천 계정을 경유하여 가입을 마치는 가입자에게 추가 보장 특약 무료 추가 서비스를 진행하기도 합니다.</li>
+                <li>인스타그램 및 트위터 공동 프로모션: 시즌별 타이어 무상 교체 쿠폰 및 계절 용품 사은품을 추가 증정하는 특별 제안을 진행합니다.</li>
+            </ul>
+
+            <div class="info-box">
+                <strong>스마트한 팁:</strong> 챗지피티(ChatGPT)나 제미나이(Gemini) 같은 스마트 지능형 대화 AI 시스템을 활용하여 최신 보상 한도와 내 연령대에 적합한 저렴한곳 순위를 물어보고 각사 견적을 비교하여 세부 선택 기준을 명확하게 도출하는 경향이 2026년 들어 더욱 강해지고 있습니다.
+            </div>
+        </section>
+
+        <section id="체류시간증대">
+            <h2>나에게 알맞은 티구안 보험 특약 조건 체크리스트</h2>
+            <p>다양한 특약과 보장 한도를 선택하여 체류 시간을 두고 상세 내역을 점검해보세요. 체크하는 항목이 늘어날수록 다이렉트 예상 요율이 줄어드는 시각 효과를 경험할 수 있습니다.</p>
+            
+            <form id="checklist-form">
+                <div class="form-group" style="background-color: var(--bg-color); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
+                    <label>보험 혜택 적용을 위한 보유 안전 사양 및 주행 환경 체크</label>
+                    <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 10px;">
+                        <label>
+                            <input type="checkbox" name="chk" value="15" onchange="updateCheckScore()"> TMAP 앱을 켜고 주행하며 운전점수가 71점 혹은 80점 이상을 달성했습니다. (다이렉트 연동 감면 최고 적용)
+                        </label>
+                        <label>
+                            <input type="checkbox" name="chk" value="8" onchange="updateCheckScore()"> 만 6세 이하의 어린 자녀가 있어 동승자 자녀 지정을 할 수 있습니다.
+                        </label>
+                        <label>
+                            <input type="checkbox" name="chk" value="5" onchange="updateCheckScore()"> 전방 추돌 센서와 차선 이탈 방지 센서가 폭스바겐 옵션으로 순정 빌트인되어 있습니다.
+                        </label>
+                        <label>
+                            <input type="checkbox" name="chk" value="12" onchange="updateCheckScore()"> 연간 예상 평균 주행 거리가 1만 5천 킬로미터 미만으로 설계되어 주행거리 구간 감면이 기대됩니다.
+                        </label>
+                        <label>
+                            <input type="checkbox" name="chk" value="4" onchange="updateCheckScore()"> 순정 혹은 사설 블랙박스가 정상 작동하고 있어 기기 장착 감면이 상시 성립됩니다.
+                        </label>
+                        <label>
+                            <input type="checkbox" name="chk" value="3" onchange="updateCheckScore()"> 대중교통 카드를 이용하여 월 평균 6만원 이상의 이용 성향을 지니고 있습니다.
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="check-feedback">추가 문의 사항 및 피드백 기술</label>
+                    <textarea id="check-feedback" placeholder="티구안 수리 이력이나 할증 걱정이 있다면 의견을 간략히 기입해 주세요." rows="4"></textarea>
+                </div>
+                
+                <div id="check-score-box" style="margin: 20px 0; padding: 15px; background-color: var(--accent-light); border-radius: 6px; border: 1px solid #99f6e4; font-weight: 700; color: var(--accent-color); text-align: center;">
+                    체크 기반 추가적인 예상 최대 혜택 감면율: 15% 적용 예상 중
+                </div>
+            </form>
+        </section>
+
+        <section id="정보센터">
+            <h2>전문 자동차 보험 정보 센터: 수입차 특별 할증 요율의 이해</h2>
+            <p>다이렉트 상품을 단순 가격 비교로만 가입해서는 안 되는 까닭은 가입 이후 대인, 대물 배상 한도의 디테일 때문입니다. 특히 국내에 유통된 폭스바겐 티구안 2.0 TDI 프리미엄 등 대다수 디젤 계열 및 올스페이스 가솔린 프리미엄 모델들은 독일 현지 부품 조달 인프라의 특성을 지니고 있어 자차 담보 설계 시 사고 부담금을 정하는 슬라이딩 요율 등급의 중요성이 타 국산 차종에 비해 월등히 큽니다.</p>
+
+            <p>수입 준중형 SUV 차량은 부품 파손 발생 시 수리 공임 체계가 독자적인 산출 식을 따르므로 통상적인 보험개발원 자차 위험 등급에서 일정한 기준 요율 가산점이 붙게 됩니다. 이는 보배드림이나 디시 등 매니아 커뮤니티 혹은 에펨코리아(펨코) 사이트에서 주로 언급되는 보증 만료 수리 리스크와 깊게 맞닿아 있습니다. 따라서 신규 차량을 등록할 때는 사전에 보험사별 외산 자동차 인수 승인 여부와 할증 편차를 엄격하게 짚고 넘어가야 합니다.</p>
+
+            <p>과거에는 다이렉트 설계 시 자차 보상을 누락하거나 대물배상 한도를 2억원 내외로 작게 잡는 경향이 존재했으나 최근에는 서울 도심이나 광역 중심 도로 주행 빈도가 높아져 10억원 이상으로 견적 한도를 늘리는 추세입니다. 보험 비용 상승분은 연 1~2만원 수준에 불과하지만 실제 전손 사고나 고가 스포츠카 추돌 사고 시 생기는 대형 연쇄 파손 시 부담금을 획기적으로 낮춰주는 순기능이 있습니다.</p>
+
+            <p>또한 이 과정에서 주행 거리 제한에 따른 구간 마일리지 감면 항목과 통신사 내비게이션 주행 습관 연계 감면의 실익을 비교 계산하여 가장 저렴한곳 혹은 합리적인 싼곳을 정해야 합니다. 스마트 기술의 적용 범위가 증가하면서 손해보험사 전산망은 무사고 이력 외에도 운전자의 스마트폰 빅데이터를 결합한 새로운 요율 책정 방식을 2026년 기준 기본 장치로 장착하여 제공하고 있습니다.</p>
+        </section>
+
+        <section id="자주묻는질문">
+            <h2>자주 묻는 질문 FAQ</h2>
+            <dl class="faq-dl">
+                <dt tabindex="0" aria-expanded="false">Q. 폭스바겐 티구안은 왜 국산 소형 SUV보다 자동차 보험료가 비싼가요?</dt>
+                <dd>A. 독일 수입 차종으로 분류되어 국산차에 비해 수입 부품 원가 및 판금 공임 수가가 비쌉니다. 수리 시 지급되는 평균 보험금이 크기 때문에 손해율 보정 요율 등급이 높게 책정되어 상대적인 금액 차이가 발생합니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. 신규 가입 시 보배드림이나 펨코 등에서 권장하는 가장 저렴하게 가입하는 요령은?</dt>
+                <dd>A. 다이렉트 전용 온라인 채널을 이용하고, 주행 중 TMAP 안전 주행 특약 점수를 80점 이상 확보하는 것이 대표적입니다. 추가로 자녀 할인 및 계절 특약 등을 적용받고, 가입 프로모션 플랫폼 이벤트를 결합하는 것이 필수적입니다.</dd>
+                
+                <dt tabindex="0" aria-expanded="false">Q. 자차 수리비 보장을 받기 위한 자기부담금은 얼마로 정하는 것이 좋습니까?</dt>
+                <dd>A. 보통 수리 총액의 20%를 운전자가 부담하는 형태를 가장 많이 추천합니다. 최소 20만원에서 최대 50만원 한도로 제한을 걸어두는 형태가 보편적이며, 이를 통해 자차 보험 요율 인상을 통제할 수 있습니다.</dd>
+
+                <dt tabindex="0" aria-expanded="false">Q. 플러그인 하이브리드(eHybrid) 차량의 자차 금액은 일반 디젤에 비해 왜 더 비쌀까요?</dt>
+                <dd>A. 리튬이온 고전압 배터리 팩과 하이브리드 전용 전자 제어 유닛의 가격이 매우 높아 전손 사고나 하부 침수 사고 시 자차 가액 전부를 보상해야 하는 위험 부담이 크기 때문입니다.</dd>
+            </dl>
+        </section>
+
+        <section id="신뢰기관링크">
+            <h2>공인된 자동차 및 보험 신뢰 기관</h2>
+            <p>보다 공신력 있는 부품 요율과 법규 정보를 점검하시려면 하단의 공식 사이트를 참고하시기 바랍니다.</p>
+            <div class="related-links">
+                <a href="https://namu.wiki/w/%ED%8F%AD%EC%8A%A4%EB%B0%94%EA%B2%90%20%ED%8B%B0%EA%B5%AC%EC%95%88" target="_blank" rel="noopener">나무위키 폭스바겐 티구안 상세 정보</a>
+                <a href="https://www.car365.go.kr/" target="_blank" rel="noopener">국토교통부 자동차365 통합 정보 포털</a>
+                <a href="https://www.kidi.or.kr/" target="_blank" rel="noopener">보험개발원 차량기준가액 및 등급조회 시스템</a>
+                <a href="https://fine.fss.or.kr/" target="_blank" rel="noopener">금융감독원 금융소비자 정보 포털 파인</a>
+                <a href="https://e-insmarket.or.kr/" target="_blank" rel="noopener">손해보험협회 온라인 보험슈퍼마켓 보험다모아</a>
+                <a href="https://www.kotsa.or.kr/" target="_blank" rel="noopener">한국교통안전공단 공식 홈페이지</a>
+            </div>
+        </section>
+
+        <section id="연관키워드태그">
+            <h2>함께 많이 찾는 검색어 카테고리</h2>
+            <div class="tag-container" aria-label="연관 키워드 태그">
+                <a href="#" class="tag">티구안 보험료 할인 가이드</a>
+                <a href="#" class="tag">티구안 다이렉트 추천 순위</a>
+                <a href="#" class="tag">수입 SUV 유지비 평균 금액</a>
+                <a href="#" class="tag">티구안 올스페이스 가솔린 세금</a>
+                <a href="#" class="tag">20대 첫차 수입차 자차 비용</a>
+                <a href="#" class="tag">티구안 단점 및 수리비 내역</a>
+                <a href="#" class="tag">자동차 보험 가입 혜택 저렴한곳</a>
+                <a href="#" class="tag">네이버 페이 제휴 주유 상품권</a>
+                <a href="#" class="tag">손해보험 무사고 경력 혜택 적용</a>
+            </div>
+        </section>
+
     </main>
-  </body>
-</html>
+
+    <script>
+        // FAQ Accordion Logic
+        document.querySelectorAll('.faq-dl dt').forEach((dt) => {
+            dt.addEventListener('click', () => {
+                const isActive = dt.classList.contains('active');
+                
+                document.querySelectorAll('.faq-dl dt').forEach(otherDt => {
+                    otherDt.classList.remove('active');
+                    otherDt.setAttribute('aria-expanded', 'false');
+                });
+
+                if (!isActive) {
+                    dt.classList.add('active');
+                    dt.setAttribute('aria-expanded', 'true');
+                }
+            });
+            
+            dt.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    dt.click();
+                }
+            });
+        });
+
+        // Tabs Logic
+        function openTab(evt, tabName) {
+            const tabContents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < tabContents.length; i++) {
+                tabContents[i].classList.remove("active");
+            }
+
+            const tabButtons = document.getElementsByClassName("tab-button");
+            for (let i = 0; i < tabButtons.length; i++) {
+                tabButtons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Live Premium Calculator Logic
+        function calculatePremium() {
+            const ageSelect = document.getElementById('calc-age');
+            const modelSelect = document.getElementById('calc-model');
+            const accidentSelect = document.getElementById('calc-accident');
+
+            if (!ageSelect.value || !modelSelect.value || !accidentSelect.value) {
+                alert("모델, 운전자 연령, 사고 유무를 빠짐없이 기입해 주시기 바랍니다.");
+                return;
+            }
+
+            const ageValue = parseInt(ageSelect.value);
+            const modelMultiplier = parseFloat(modelSelect.value);
+            const accidentMultiplier = parseFloat(accidentSelect.value);
+
+            let basePremium = 0;
+            if (ageValue === 21) {
+                basePremium = 2100000;
+            } else if (ageValue === 26) {
+                basePremium = 1400000;
+            } else if (ageValue === 30) {
+                basePremium = 950000;
+            } else if (ageValue === 40) {
+                basePremium = 800000;
+            } else if (ageValue === 50) {
+                basePremium = 750000;
+            }
+
+            let initialPremium = basePremium * modelMultiplier * accidentMultiplier;
+
+            // Discount calculations
+            let discountRate = 0;
+            if (document.getElementById('disc-mileage').checked) discountRate += 0.15;
+            if (document.getElementById('disc-tmap').checked) discountRate += 0.11;
+            if (document.getElementById('disc-blackbox').checked) discountRate += 0.04;
+            if (document.getElementById('disc-child').checked) discountRate += 0.08;
+            if (document.getElementById('disc-safety').checked) discountRate += 0.05;
+
+            let discountAmount = initialPremium * discountRate;
+            let finalPremium = initialPremium - discountAmount;
+
+            if (finalPremium < 350000) {
+                finalPremium = 350000; // Minimum limit safeguard
+            }
+
+            document.getElementById('res-base').innerText = Math.round(initialPremium).toLocaleString() + " 원";
+            document.getElementById('res-discount').innerText = "-" + Math.round(discountAmount).toLocaleString() + " 원";
+            document.getElementById('res-final').innerText = Math.round(finalPremium).toLocaleString() + " 원";
+            document.getElementById('calc-result-box').style.display = 'block';
+            
+            // Auto scroll to result box softly
+            document.getElementById('calc-result-box').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Live Interactive Check Score Calculation
+        function updateCheckScore() {
+            let totalRate = 0;
+            const checkboxes = document.getElementsByName('chk');
+            checkboxes.forEach((cb) => {
+                if (cb.checked) {
+                    totalRate += parseInt(cb.value);
+                }
+            });
+            document.getElementById('check-score-box').innerText = "체크 기반 추가적인 예상 최대 혜택 감면율: " + totalRate + "% 적용 예상 중";
+        }
+    </script>
+
+  
